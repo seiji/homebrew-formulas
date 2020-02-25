@@ -7,7 +7,7 @@ class Terragrunt < Formula
   url "https://github.com/gruntwork-io/terragrunt/releases/download/v#{version}/terragrunt_darwin_amd64"
 
   def install
-    bin.install "terragrunt"
+    bin.install "terragrunt_darwin_amd64"
     prefix.install %w[LICENSE.txt]
   end
 
