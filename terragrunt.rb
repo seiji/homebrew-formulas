@@ -8,10 +8,10 @@ class Terragrunt < Formula
 
   def install
     bin.install "terragrunt"
-    prefix.install %w[LICENSE]
+    prefix.install %w[LICENSE.txt]
   end
 
   test do
-    assert_match version.to_s, shell_output("#{bin}/terragrunt --version")
+    system bin/"terragrunt"
   end
 end
