@@ -12,6 +12,6 @@ class Terragrunt < Formula
   end
 
   test do
-    system bin/"terragrunt"
+    assert_match version.to_s, shell_output("#{bin}/terragrunt --version")
   end
 end
