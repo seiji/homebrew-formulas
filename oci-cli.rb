@@ -1,4 +1,6 @@
 class OciCli < Formula
+  include Language::Python::Virtualenv
+
   desc "Command Line Interface for Oracle Cloud Infrastructure"
   homepage "https://cloud.oracle.com/cloud-infrastructure"
   url "https://github.com/oracle/oci-cli/archive/v2.9.7.tar.gz"
