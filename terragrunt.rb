@@ -2,7 +2,7 @@ class Terragrunt < Formula
   desc "Thin wrapper for Terraform e.g. for locking state"
   homepage "https://github.com/gruntwork-io/terragrunt"
 
-  version "v0.23.31"
+  version "0.23.31"
   url "https://github.com/gruntwork-io/terragrunt.git",
     :tag      => "v0.23.31",
     :revision => "24d9a82dd5c45aa0a08d56bafb95b3ffe8eb5a30"
@@ -13,7 +13,7 @@ class Terragrunt < Formula
     ENV["GOPATH"] = buildpath
     (buildpath/"src/github.com/gruntwork-io/terragrunt").install buildpath.children
     cd "src/github.com/gruntwork-io/terragrunt" do
-      system "go", "build", "-o", bin/"terragrunt", "-ldflags", "\"-X main.VERSION=v#{version}\""
+      system "go", "build", "-o", bin/"terragrunt", "-ldflags", "-X main.VERSION=v#{version}"
     end
   end
 
