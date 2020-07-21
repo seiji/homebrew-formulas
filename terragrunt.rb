@@ -6,13 +6,11 @@ class Terragrunt < Formula
     :revision => "24d9a82dd5c45aa0a08d56bafb95b3ffe8eb5a30"
 
   depends_on "dep" => :build
-  depends_on "go" => :build
 
   def install
     ENV["GOPATH"] = buildpath
     (buildpath/"src/github.com/gruntwork-io/terragrunt").install buildpath.children
     cd "src/github.com/gruntwork-io/terragrunt" do
-      system "dep", "ensure", "-vendor-only"
       system "go", "build", "-o", bin/"terragrunt", "-ldflags", "-X main.VERSION=v#{version}"
     end
   end
