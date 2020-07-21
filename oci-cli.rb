@@ -4,7 +4,7 @@ class OciCli < Formula
   desc "Command Line Interface for Oracle Cloud Infrastructure"
   homepage "https://cloud.oracle.com/cloud-infrastructure"
   url "https://github.com/oracle/oci-cli/archive/v2.12.3.tar.gz"
-  sha256 "80076aa4617557c5a84b2d9bcde35f1cd519e50a80221243bb9c8f562b8a58fb"
+  sha256 "c0879daee931cd03cf0ea06661a79f86c13b803b778f32a1e7938653e100c566"
 
   depends_on "python"
 
