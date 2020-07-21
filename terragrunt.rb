@@ -1,24 +1,27 @@
 class Terragrunt < Formula
   desc "Thin wrapper for Terraform e.g. for locking state"
   homepage "https://github.com/gruntwork-io/terragrunt"
+  url "https://github.com/gruntwork-io/terragrunt/archive/v0.23.31.tar.gz"
+  sha256 "7bb9859fd968220bcae1908079448834a789fca03d644d405a61441cd4a655a2"
 
-  version "0.23.31"
-  url "https://github.com/gruntwork-io/terragrunt.git",
-    :tag      => "v0.23.31",
-    :revision => "24d9a82dd5c45aa0a08d56bafb95b3ffe8eb5a30"
+  bottle do
+    cellar :any_skip_relocation
+    sha256 "c74b848ce18f0e9213060a65ce821780253bb1b5243347ef54a0e1be5340c417" => :catalina
+    sha256 "07f2f7c28801f415bc2fa0eb4c12f822c4c54cb43bae78628fd8c8db372717d5" => :mojave
+    sha256 "96abd6473924b65e834d33412f2d3087f994f9a368367e79a75b47acec02475c" => :high_sierra
+  end
+
+  # url "https://github.com/gruntwork-io/terragrunt.git",
+  #   :tag      => "v0.23.31",
+  #   :revision => "24d9a82dd5c45aa0a08d56bafb95b3ffe8eb5a30"
 
   depends_on "go" => :build
 
   def install
-    ENV["GOPATH"] = buildpath
-    (buildpath/"src/github.com/gruntwork-io/terragrunt").install buildpath.children
-    cd "src/github.com/gruntwork-io/terragrunt" do
-      system "go", "build", "-o", bin/"terragrunt", "-ldflags", "-X main.VERSION=v#{version}"
-    end
+    system "go", "build", "-ldflags", "-X main.VERSION=v#{version}", *std_go_args
   end
 
   test do
     assert_match version.to_s, shell_output("#{bin}/terragrunt --version")
-    # system bin/"terragrunt"
   end
 end
