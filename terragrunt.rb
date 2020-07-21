@@ -6,7 +6,7 @@ class Terragrunt < Formula
     :tag      => "v0.23.31",
     :revision => "24d9a82dd5c45aa0a08d56bafb95b3ffe8eb5a30"
 
-  depends_on "dep" => :build
+  depends_on "go" => :build
 
   def install
     ENV["GOPATH"] = buildpath
@@ -17,7 +17,7 @@ class Terragrunt < Formula
   end
 
   test do
-    # assert_match version.to_s, shell_output("#{bin}/terragrunt --version")
-    system bin/"terragrunt"
+    assert_match version.to_s, shell_output("#{bin}/terragrunt --version")
+    # system bin/"terragrunt"
   end
 end
