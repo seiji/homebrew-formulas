@@ -11,7 +11,7 @@ class Terragrunt < Formula
     ENV["GOPATH"] = buildpath
     (buildpath/"src/github.com/gruntwork-io/terragrunt").install buildpath.children
     cd "src/github.com/gruntwork-io/terragrunt" do
-      system "go", "build", "-o", bin/"terragrunt", "-ldflags", "-X main.VERSION=v#{version}"
+      system "go", "build", "-o", bin/"terragrunt", "-ldflags", "\"-X main.VERSION=v#{version}\""
     end
   end
 
