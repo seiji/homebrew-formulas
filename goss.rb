@@ -10,9 +10,10 @@ class Goss < Formula
 
   def install
     ENV["CGO_ENABLED"] = "0"
-    system "go", "build", *std_go_args(ldflags: "-s -w")
+    system "go", "build", *std_go_args(ldflags: "-s -w"),
+      "-o", bin/"goss",
+      "github.com/aelsabbahy/goss/cmd/goss"
 
-    bin.install "bin/goss"
     bin.install "extras/dgoss/dgoss"
     bin.install "extras/dcgoss/dcgoss"
     bin.install "extras/kgoss/kgoss"
