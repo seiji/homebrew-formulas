@@ -10,7 +10,7 @@ class Goss < Formula
 
   def install
     ENV["CGO_ENABLED"] = "0"
-    system "go", "build", "-ldflags", "-s -w", "-X main.VERSION=v#{version}", *std_go_args,
+    system "go", "build", "-ldflags", "-s -w", "-X main.version=v#{version}", *std_go_args,
       "github.com/aelsabbahy/goss/cmd/goss"
 
     bin.install "extras/dgoss/dgoss"
