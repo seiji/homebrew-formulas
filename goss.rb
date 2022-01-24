@@ -10,7 +10,8 @@ class Goss < Formula
 
   def install
     ENV["CGO_ENABLED"] = "0"
-    system "go", "build", *std_go_args(ldflags: "-s -w", output: bin/),
+    system "go", "build", "-ldflags", "-s -w", "-X main.VERSION=v#{version}", *std_go_args,
+      "-o", bin/"goss",
       "github.com/aelsabbahy/goss/cmd/goss"
 
     bin.install "extras/dgoss/dgoss"
@@ -19,6 +20,6 @@ class Goss < Formula
   end
 
   test do
-    system bin/"goss", "--version"
+    assert_match version.to_s, shell_output("#{bin}/goss --version")
   end
 end
